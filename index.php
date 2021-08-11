@@ -13,3 +13,8 @@ function doSomething()
 }
 
 $a = 5;
+
+function privet()
+{
+    return "privet";
+}
