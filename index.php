@@ -11,3 +11,5 @@ function doSomething()
     return true;
 
 }
+
+$a = 5;
