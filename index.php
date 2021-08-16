@@ -48,13 +48,11 @@ class Human
     {
         for ($i = 0; $i < count($this->rodstv); $i++) {
             if ($this->rodstv [$i]->isEqual($a)) {
-                break;
-            } else {
-                $this->rodstv[] = $a;
-                $a->addRelativs($this);
-            }
+                return;
+            } 
         }
-        $this->rodstv = array_unique($this->rodstv);
+        $this->rodstv[] = $a;
+        $a->addRelativs($this);
     }
 
 }
