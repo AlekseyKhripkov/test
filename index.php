@@ -25,7 +25,7 @@ class Human
     public function addRelatives($a)
     {
         for ($i = 0; $i < count($this->relatives); $i++) {
-            if ($this->relatives [$i]->isEqual($a)) {
+            if ($this->relatives[$i]->isEqual($a)) {
                 return;
             }
         }
@@ -38,6 +38,19 @@ class Human
         return $this->relatives;
     }
 
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    public function isAdult()
+    {
+        $now = new DateTime(); // текущее время
+        $dateDiff = $this->date->diff($now); // рзаница текущей даты и даты обьекта
+
+        return $dateDiff->y > 18;
+    }
+
     private function isEqual ($a)
     {
         if($this->name == $a->name){
@@ -48,7 +61,9 @@ class Human
     }
 }
 
-$petrov = new Human("Aleksey", "Petrov", "Sergeevich", new DateTime ('1991-01-24'));
+$petrov = new Human("Aleksey", "Petrov", "Sergeevich", new DateTime ('2007-01-24'));
+
+
 $ivanov = new Human("Vasiliy" , "Ivanov" , "Alekseevich" , new DateTime(1980-12-11));
 $sidorov = new Human("Ivan", "Sidorov" , "Petrovich" , new DateTime(1970-05-28));
 $sokolov = new Human("Petr" , "Sokolov" , "Ivanovich" , new DateTime(1992-07-24));
@@ -60,6 +75,25 @@ $petrov->addRelatives($sidorov);
 $petrov->addRelatives($sokolov);
 
 
-foreach ($petrov->getRelatives() as $relative) {
+$relatives = $petrov->getRelatives();
+$isAdultRelatives = [];
+$isNotAdultRelatives = [];
+foreach ($relatives as $relative) {
+    if ($relative->isAdult()) {
+        $isAdultRelatives[] = $relative;
+    } else {
+        $isNotAdultRelatives[] = $relative;
+    }
+}
+
+echo "Старые родственники: \n";
+foreach ($isAdultRelatives as $relative) {
+    echo $relative->getName() . "\n";
+}
+
+echo "\n\n";
+
+echo "Молодые родственники: \n";
+foreach ($isNotAdultRelatives as $relative) {
     echo $relative->getName() . "\n";
 }
