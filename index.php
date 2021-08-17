@@ -5,59 +5,47 @@ class Human
     private $name;
     private $surname;
     private $patronymic;
-    private $data;
-    private $rodstv = [];
+    private $date;
+    private $relatives = [];
 
-    public function __construct($name, $suname, $patronymic, $date, $rodstv = [])
+    public function __construct($name, $surname, $patronymic, $date, $relatives = [])
     {
         $this->name = $name;
-        $this->surname = $suname;
+        $this->surname = $surname;
         $this->patronymic = $patronymic;
-        $this->data = $date;
-        $this->rodstv = $rodstv;
+        $this->date = $date;
+        $this->relatives = $relatives;
     }
-
 
     public function getName()
     {
         return $this->surname . " " . substr($this->name, 0, 1) . "." . substr($this->patronymic, 0, 1) . ".";
     }
 
-
-
-    private function isEqual ($a){
-        if($this->name == $a->name){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-
-
-
-
     public function addRelatives($a)
     {
-        for ($i = 0; $i < count($this->rodstv); $i++) {
-            if ($this->rodstv [$i]->isEqual($a)) {
+        for ($i = 0; $i < count($this->relatives); $i++) {
+            if ($this->relatives [$i]->isEqual($a)) {
                 return;
             }
         }
-        $this->rodstv[] = $a;
+        $this->relatives[] = $a;
         $a->addRelatives($this);
     }
 
     public function getRelatives()
     {
-        for($i = 0; $i < count($this->rodstv); $i++)
-        {
-           echo $this->rodstv[$i]->getName();
-        }
-
+        return $this->relatives;
     }
 
+    private function isEqual ($a)
+    {
+        if($this->name == $a->name){
+            return true;
+        }
+
+        return false;
+    }
 }
 
 $petrov = new Human("Aleksey", "Petrov", "Sergeevich", new DateTime ('1991-01-24'));
@@ -72,6 +60,6 @@ $petrov->addRelatives($sidorov);
 $petrov->addRelatives($sokolov);
 
 
-
-
-$petrov->getRelatives();
+foreach ($petrov->getRelatives() as $relative) {
+    echo $relative->getName() . "\n";
+}
