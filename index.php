@@ -140,27 +140,25 @@ $array[$perepechka->getName()] = $perepechka->getgrowth();
 
 
 
-//for ($i = 0; $i<count($array); $i++){
-//    for ($y = ($i + 1); $y < count($array); $y++){
-//        if($array[$i] > $array[$y]){
-//            $c = $array[$i];
-//            $array[$i] = $array[$y];
-//            $array[$y] = $c;
-//        }
-//    }
-//}
+$a = 0;
+$b = 1;
 
-//foreach ($array as $name1 => $growth1){
-//    foreach ($array as $name2 => $growth2){
-//        if($growth1 > $growth2){
-//            $c = $growth1;
-//            $growth1 = $growth2;
-//            $growth2 = $c;
-//        }
-//    }
-//}
+foreach ($array as $name1 => $growth1){
+    $a = $a + 1;
+    $b = 1;
+    foreach ($array as $name2 => $growth2){
 
-arsort($array);
+        if($b > $a){
+            if($growth2 > $growth1){
+                $c = $growth1;
+                $array[$name1] = $growth2;
+                $array[$name2] = $c;
+            }
+        }
+        $b = $b + 1;
+    }
+}
+
 
 print_r($array);
 
@@ -199,3 +197,46 @@ print_r($array);
 //$array["15"] = true;
 //
 //print_r($array);
+
+//$array = [];
+//$array[32] = 123;
+//$array["blabla"] = 1768;
+//$array[true] = true;
+//$array[34] = 673;
+//$array[5] = "blabla";
+//$array["privet"] = "aga";
+//$array[546] = "dada";
+//$array["red"] = "red";
+//$array["green"] = "green";
+//$array["ok"] = 6879;
+//$array["ppc"] = true;
+//$array[567] = "qwerty";
+//$array["moscow"] = 777;
+//$array["rostov"] = 161;
+//$array["krasnodar"] = 123;
+//$array[123] = "krasnodar";
+//$array[97] = "moscow";
+//$array[161] = "rostov";
+//$array["do it"] = "do it";
+//$array[143] = 987;
+//$array["array"] = [1 , 3 , 5];
+//
+//unset($array[97]);
+//
+//print_r($array);
+
+
+
+
+//$array7 = [6 , 8 , 9, 65];
+//$array8 = [5 , 4 , 3, 3];
+//$array9 = [11 , 22 , 56, 6];
+//for ($i = 0; $i < count($array7); $i++){
+//    echo $array7[$i] . "\n";
+//}
+//for ($i = 0; $i < count($array8); $i++){
+//    echo $array8[$i] . "\n";
+//}
+//for ($i = 0; $i < count($array9); $i++){
+//    echo $array9[$i] . "\n";
+//}
