@@ -2,17 +2,17 @@
 
 interface IbirdsFly
 {
-    public function CanFly();
+    public function canFly();
 }
 
 interface IbirdsRun
 {
-    public function CanRun();
+    public function canRun();
 }
 
 interface IbirdsPredator
 {
-    public function GetPredator();
+    public function getPredator();
 }
 
 
@@ -34,17 +34,17 @@ abstract class AbstractBirds
 
     }
 
-    public function GetName()
+    public function getName()
     {
-        return $this->name;
+        return "Название птицы - " . $this->name;
     }
 
-    public function GetWeight()
+    public function getWeight()
     {
         return "Вес прицы - " . $this->weight . "КГ";
     }
 
-    public function GetColor()
+    public function getColor()
     {
         return "Цвет птицы - " . $this->color;
     }
@@ -56,12 +56,12 @@ abstract class AbstractBirds
 class HomeBirds extends AbstractBirds implements IbirdsRun
 {
 
-    public function CanRun()
+    public function canRun()
     {
         return "Эта птица умеет бегать";
     }
 
-    public function GetSound()
+    public function getSound()
     {
         return "Птица издает звуки - " . $this->sound;
     }
@@ -71,17 +71,17 @@ class HomeBirds extends AbstractBirds implements IbirdsRun
 class NaturBirds extends AbstractBirds implements IbirdsFly , IbirdsPredator
 {
 
-    public function GetPredator()
+    public function getPredator()
     {
         return "Эта птица является хищником";
     }
 
-    public function GetSound()
+    public function getSound()
     {
-        return "В природе имеет свойственный только ей звук - " . $this->sound . $this->sound. $this->sound;
+        return "В природе имеет свойственный только ей звук - " . $this->sound . " " . $this->sound . " " . $this->sound;
     }
 
-    public function CanFly(): string
+    public function canFly()
     {
         return "Эта птица умеет летать";
     }
@@ -93,6 +93,50 @@ $vorona = new NaturBirds("Ворона", 3, "Черный", "Кар - кар б�
 $eagle = new NaturBirds("Орёл", 5, "Коричневый", "Вжууууух");
 $chick = new HomeBirds("Курица", 3, "Красный", "Кукареку");
 
-$eagle->GetName();
-
-
+echo $duck->getName();
+echo "\n";
+echo $duck->getWeight();
+echo "\n";
+echo $duck->getColor();
+echo "\n";
+echo $duck->getSound();
+echo "\n";
+echo $duck->canRun();
+echo "\n";
+echo "\n";
+echo "\n";
+echo $vorona->getName();
+echo "\n";
+echo $vorona->getWeight();
+echo "\n";
+echo $vorona->getColor();
+echo "\n";
+echo $vorona->getSound();
+echo "\n";
+echo $vorona->canFly();
+echo "\n";
+echo "\n";
+echo "\n";
+echo $eagle->getName();
+echo "\n";
+echo $eagle->getWeight();
+echo "\n";
+echo $eagle->getColor();
+echo "\n";
+echo $eagle->getSound();
+echo "\n";
+echo $eagle->canFly();
+echo "\n";
+echo $eagle->getPredator();
+echo "\n";
+echo "\n";
+echo "\n";
+echo $chick->getName();
+echo "\n";
+echo $chick->getWeight();
+echo "\n";
+echo $chick->getColor();
+echo "\n";
+echo $chick->getSound();
+echo "\n";
+echo $chick->canRun();
