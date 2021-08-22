@@ -1,9 +1,18 @@
 <?php
 
-interface Ibirds
+interface IbirdsFly
 {
-    public function canFly();
-    public function setFly($fly);
+    public function CanFly();
+}
+
+interface IbirdsRun
+{
+    public function CanRun();
+}
+
+interface IbirdsPredator
+{
+    public function GetPredator();
 }
 
 
@@ -25,17 +34,17 @@ abstract class AbstractBirds
 
     }
 
-    public function getName()
+    public function GetName()
     {
-        return "Название птицы - " . $this->name;
+        return $this->name;
     }
 
-    public function getWeight()
+    public function GetWeight()
     {
         return "Вес прицы - " . $this->weight . "КГ";
     }
 
-    public function getColor()
+    public function GetColor()
     {
         return "Цвет птицы - " . $this->color;
     }
@@ -44,96 +53,46 @@ abstract class AbstractBirds
 
 }
 
-class HomeBirds extends AbstractBirds implements Ibirds
+class HomeBirds extends AbstractBirds implements IbirdsRun
 {
 
-    public function getSound()
+    public function CanRun()
+    {
+        return "Эта птица умеет бегать";
+    }
+
+    public function GetSound()
     {
         return "Птица издает звуки - " . $this->sound;
     }
 
-    public function setFly($fly)
-    {
-       $this->fly = $fly;
-    }
-
-    public function canFly(): string
-    {
-        return "Умение летать - " . $this->fly;
-    }
 }
 
-class NaturBirds extends AbstractBirds implements Ibirds
+class NaturBirds extends AbstractBirds implements IbirdsFly , IbirdsPredator
 {
 
-    public function getSound()
+    public function GetPredator()
     {
-        return "Птица издает звуки - " . $this->sound;
+        return "Эта птица является хищником";
     }
 
-    public function setFly($fly)
+    public function GetSound()
     {
-        $this->fly = $fly;
+        return "В природе имеет свойственный только ей звук - " . $this->sound . $this->sound. $this->sound;
     }
 
-    public function canFly(): string
+    public function CanFly(): string
     {
-        return "Умение летать - " . $this->fly;
+        return "Эта птица умеет летать";
     }
 }
 
-$chick = new HomeBirds("Курица", 2, "Красный", "Кукареку");
+
 $duck = new HomeBirds("Утка", 4, "Черный", "Кря-кря");
 $vorona = new NaturBirds("Ворона", 3, "Черный", "Кар - кар бля");
 $eagle = new NaturBirds("Орёл", 5, "Коричневый", "Вжууууух");
+$chick = new HomeBirds("Курица", 3, "Красный", "Кукареку");
 
-$chick->setFly("НЕТ");
-$duck->setFly("ДА");
-$vorona->setFly("ДА");
-$eagle->setFly("ДА");
+$eagle->GetName();
 
-echo $chick->getName();
-echo "\n";
-echo $chick->getWeight();
-echo "\n";
-echo $chick->getColor();
-echo "\n";
-echo $chick->canFly();
-echo "\n";
-echo $chick->getSound();
-echo "\n";
-echo "\n";
-echo "\n";
-echo $duck->getName();
-echo "\n";
-echo $duck->getWeight();
-echo "\n";
-echo $duck->getColor();
-echo "\n";
-echo $duck->canFly();
-echo "\n";
-echo $duck->getSound();
-echo "\n";
-echo "\n";
-echo "\n";
-echo $vorona->getName();
-echo "\n";
-echo $vorona->getWeight();
-echo "\n";
-echo $vorona->getColor();
-echo "\n";
-echo $vorona->canFly();
-echo "\n";
-echo $vorona->getSound();
-echo "\n";
-echo "\n";
-echo "\n";
-echo $eagle->getName();
-echo "\n";
-echo $eagle->getWeight();
-echo "\n";
-echo $eagle->getColor();
-echo "\n";
-echo $eagle->canFly();
-echo "\n";
-echo $eagle->getSound();
+
