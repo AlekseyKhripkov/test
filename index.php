@@ -8,7 +8,7 @@ interface Ibirds
 
 
 
-abstract class birds
+abstract class AbstractBirds
 {
     protected string $name;
     protected int $weight;
@@ -27,7 +27,7 @@ abstract class birds
 
     public function getName()
     {
-        return "Название прицы - " . $this->name;
+        return "Название птицы - " . $this->name;
     }
 
     public function getWeight()
@@ -37,14 +37,14 @@ abstract class birds
 
     public function getColor()
     {
-        return "Цвет прицы - " . $this->color;
+        return "Цвет птицы - " . $this->color;
     }
 
     abstract public function getSound();
 
 }
 
-class homeBirds extends birds implements Ibirds
+class HomeBirds extends AbstractBirds implements Ibirds
 {
 
     public function getSound()
@@ -63,7 +63,7 @@ class homeBirds extends birds implements Ibirds
     }
 }
 
-class naturBirds extends birds implements Ibirds
+class NaturBirds extends AbstractBirds implements Ibirds
 {
 
     public function getSound()
@@ -82,10 +82,10 @@ class naturBirds extends birds implements Ibirds
     }
 }
 
-$chick = new homeBirds("Курица", 2, "Красный", "Кукареку");
-$duck = new homeBirds("Утка", 4, "Черный", "Кря-кря");
-$vorona = new naturBirds("Ворона", 3, "Черный", "Кар - кар бля");
-$eagle = new naturBirds("Орёл", 5, "Коричневый", "Вжууууух");
+$chick = new HomeBirds("Курица", 2, "Красный", "Кукареку");
+$duck = new HomeBirds("Утка", 4, "Черный", "Кря-кря");
+$vorona = new NaturBirds("Ворона", 3, "Черный", "Кар - кар бля");
+$eagle = new NaturBirds("Орёл", 5, "Коричневый", "Вжууууух");
 
 $chick->setFly("НЕТ");
 $duck->setFly("ДА");
