@@ -1,20 +1,9 @@
 <?php
 
-function sum($a , $b)
-{
-    return $a + $b;
+$a = "1";
 
-}
-
-function doSomething()
-{
-    return true;
-
-}
-
-$a = 5;
-
-function privet()
-{
-    return "privet";
+if ($a === 1) {
+    echo "HELLO WORLD!!!";
+} else {
+    echo "GOODBYE WORLD!!!";
 }
